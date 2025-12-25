@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sk Makeup Studio | Luxury Salon & Spa</title>
+    <meta name="description" content="Sk Makeup Studio - The premier luxury salon for bridal makeup, editorial styling, and skin treatments.">
+    <title>Sk Makeup Studio | World Class Luxury Salon</title>
+    
+    <link rel="icon" type="image/png" href="sk-logo.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -15,370 +19,202 @@
         :root {
             --primary-gold: #D4AF37;
             --secondary-gold: #F3E5AB;
-            --dark-bg: #0a0a0a;
-            --card-bg: #151515;
+            --dark-bg: #050505;
+            --card-bg: #111;
             --text-light: #f4f4f4;
             --text-grey: #a0a0a0;
-            --glass: rgba(255, 255, 255, 0.05);
             --transition: all 0.4s ease;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--dark-bg); color: var(--text-light); overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
 
+        /* --- 1. LUXURY PRELOADER --- */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.8s ease;
+        }
+        .loader-logo { width: 100px; animation: pulseGold 2s infinite; }
+        @keyframes pulseGold {
+            0% { transform: scale(1); opacity: 0.6; filter: drop-shadow(0 0 5px #D4AF37); }
+            50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 20px #D4AF37); }
+            100% { transform: scale(1); opacity: 0.6; filter: drop-shadow(0 0 5px #D4AF37); }
+        }
+
         /* --- NAVIGATION --- */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            position: fixed; top: 0; width: 100%; padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(15px); border-bottom: 1px solid rgba(212, 175, 55, 0.1);
             transition: var(--transition);
         }
+        .logo img { height: 50px; width: auto; vertical-align: middle; transition: transform 0.3s; }
+        .logo:hover img { transform: scale(1.1); filter: drop-shadow(0 0 5px var(--primary-gold)); }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-gold);
-            letter-spacing: 2px;
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); position: relative; }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
+            background-color: var(--primary-gold); transition: width 0.3s;
         }
+        .nav-links a:hover { color: var(--primary-gold); }
+        .nav-links a:hover::after { width: 100%; }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
+        .book-btn { padding: 10px 25px; border: 1px solid var(--primary-gold); color: var(--primary-gold); border-radius: 50px; transition: var(--transition); font-size: 0.9rem; letter-spacing: 1px; }
+        .book-btn:hover { background: var(--primary-gold); color: var(--dark-bg); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
 
-        .nav-links a {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-gold);
-        }
-
-        .book-btn {
-            padding: 10px 25px;
-            border: 1px solid var(--primary-gold);
-            color: var(--primary-gold);
-            border-radius: 50px;
-            transition: var(--transition);
-        }
-
-        .book-btn:hover {
-            background: var(--primary-gold);
-            color: var(--dark-bg);
-        }
+        .hamburger { display: none; font-size: 1.5rem; color: var(--primary-gold); cursor: pointer; }
 
         /* --- HERO SECTION --- */
         header {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('main.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Parallax effect */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            display: flex; align-items: center; justify-content: center; text-align: center;
         }
+        .hero-content { max-width: 800px; padding: 20px; opacity: 0; transform: translateY(30px); animation: fadeUp 1s forwards 0.8s; }
+        .hero-content h1 { font-size: 4.5rem; margin-bottom: 20px; line-height: 1.1; letter-spacing: -1px; }
+        .hero-content h1 span { color: var(--primary-gold); font-style: italic; font-family: 'Playfair Display', serif; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 40px; color: #ddd; }
+        
+        .cta-button { padding: 18px 45px; background: var(--primary-gold); color: var(--dark-bg); font-weight: 600; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); display: inline-block; cursor: pointer; border: none; }
+        .cta-button:hover { background: white; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); }
 
-        .hero-content {
-            max-width: 800px;
-            padding: 20px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s forwards 0.5s;
-        }
+        /* --- SECTIONS --- */
+        section { padding: 100px 5%; }
+        .section-title { text-align: center; margin-bottom: 70px; }
+        .section-title h2 { font-size: 3rem; color: var(--primary-gold); margin-bottom: 15px; position: relative; display: inline-block; }
+        .section-title h2::after { content: ''; display: block; width: 60px; height: 2px; background: var(--primary-gold); margin: 10px auto 0; }
+        .section-title p { color: var(--text-grey); max-width: 600px; margin: 0 auto; letter-spacing: 1px; }
 
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            line-height: 1.1;
-        }
+        /* --- ABOUT --- */
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-text h3 { font-size: 2.2rem; margin-bottom: 25px; color: #fff; }
+        .about-text p { color: var(--text-grey); line-height: 1.9; margin-bottom: 20px; font-size: 1.05rem; }
+        .about-image img { width: 100%; border-radius: 2px; box-shadow: -15px 15px 0 rgba(212, 175, 55, 0.2); transition: 0.5s; }
+        .about-image:hover img { transform: scale(1.02); box-shadow: -20px 20px 0 var(--primary-gold); }
 
-        .hero-content h1 span {
-            color: var(--primary-gold);
-            font-style: italic;
-        }
+        /* --- SERVICES --- */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .service-card { background: var(--card-bg); padding: 50px 30px; text-align: center; border: 1px solid rgba(255,255,255,0.03); transition: var(--transition); cursor: pointer; position: relative; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--primary-gold); transform: scaleX(0); transform-origin: left; transition: 0.4s; }
+        .service-card:hover { transform: translateY(-10px); background: #1a1a1a; }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-icon { font-size: 3.5rem; color: var(--primary-gold); margin-bottom: 25px; }
 
-        .hero-content p {
-            font-size: 1.2rem;
-            color: var(--text-grey);
-            margin-bottom: 40px;
-        }
+        /* --- PRICING --- */
+        .pricing-container { max-width: 900px; margin: 0 auto; background: var(--card-bg); padding: 60px; border: 1px solid rgba(212, 175, 55, 0.15); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .pricing-category { margin-bottom: 50px; }
+        .pricing-category h3 { color: var(--primary-gold); border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 30px; letter-spacing: 1px; }
+        .menu-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; transition: var(--transition); }
+        .menu-item:hover { transform: translateX(10px); }
+        .item-name h4 { font-size: 1.2rem; color: #fff; margin-bottom: 5px; }
+        .item-desc { font-size: 0.9rem; color: #666; font-family: 'Poppins', sans-serif; }
+        .item-price { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--primary-gold); font-weight: bold; }
+        .dots { flex-grow: 1; border-bottom: 1px dotted #444; margin: 0 20px; position: relative; top: -5px; }
 
-        .cta-button {
-            padding: 15px 40px;
-            background: var(--primary-gold);
-            color: var(--dark-bg);
-            font-weight: 600;
-            font-size: 1rem;
-            border-radius: 0;
-            letter-spacing: 1px;
-            transition: var(--transition);
-            display: inline-block;
-        }
+        /* --- NEW: TESTIMONIALS SECTION --- */
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .review-card { background: #0f0f0f; padding: 40px; border-left: 3px solid var(--primary-gold); position: relative; transition: 0.3s; }
+        .review-card:hover { background: #141414; transform: translateY(-5px); }
+        .stars { color: var(--primary-gold); margin-bottom: 15px; font-size: 0.9rem; }
+        .review-text { font-style: italic; color: #ccc; margin-bottom: 25px; font-size: 1rem; line-height: 1.6; }
+        .client-name { font-family: 'Playfair Display', serif; font-weight: bold; color: #fff; font-size: 1.1rem; }
+        .client-name span { color: var(--text-grey); font-size: 0.8rem; font-weight: normal; font-family: 'Poppins', sans-serif; margin-left: 10px; }
 
-        .cta-button:hover {
-            background: white;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
+        /* --- PORTFOLIO --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .gallery-item { position: relative; height: 350px; overflow: hidden; border-radius: 2px; cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; filter: grayscale(20%); }
+        .gallery-item:hover img { transform: scale(1.1); filter: grayscale(0%); }
+        .gallery-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); opacity: 0; transition: 0.4s; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; bottom: 0; }
+        .gallery-overlay h3 { color: var(--primary-gold); font-size: 1.5rem; }
 
-        /* --- SECTIONS GENERAL --- */
-        section {
-            padding: 100px 5%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 3rem;
-            color: var(--primary-gold);
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: var(--text-grey);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* --- SERVICES (Cards with Hover) --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--card-bg);
-            padding: 40px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: var(--transition);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-gold);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            color: var(--primary-gold);
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: var(--text-grey);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-
-        .price {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            color: var(--text-light);
-        }
-
-        /* --- GALLERY (Masonry Feel) --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .gallery-item {
-            position: relative;
-            height: 300px;
-            overflow: hidden;
-            border-radius: 4px;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(to top, black, transparent);
-            opacity: 0;
-            transition: 0.3s;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        /* --- BOOKING SECTION (Glassmorphism) --- */
+        /* --- BOOKING --- */
         .booking-section {
             background: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative; display: flex; align-items: center; justify-content: center; background-attachment: fixed;
         }
+        .booking-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
+        .booking-container { position: relative; width: 100%; max-width: 700px; background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(20px); padding: 60px; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 5px; box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 10px; font-size: 0.9rem; color: var(--primary-gold); letter-spacing: 1px; }
+        .form-control { width: 100%; padding: 18px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: 'Poppins', sans-serif; outline: none; transition: 0.3s; font-size: 1rem; }
+        .form-control:focus { border-color: var(--primary-gold); background: rgba(0,0,0,0.8); }
 
-        .booking-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-        }
-
-        .booking-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.05); /* Glass effect */
-            backdrop-filter: blur(15px);
-            padding: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: var(--primary-gold);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 15px;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        .form-control:focus {
-            border-color: var(--primary-gold);
-            background: rgba(0,0,0,0.6);
-        }
+        /* --- CONTACT --- */
+        .contact-section { background-color: #050505; }
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
+        .contact-info-card { background: var(--card-bg); padding: 50px; border: 1px solid rgba(212, 175, 55, 0.1); }
+        .info-item { display: flex; align-items: flex-start; margin-bottom: 35px; }
+        .info-icon { font-size: 1.8rem; color: var(--primary-gold); margin-right: 25px; margin-top: 5px; }
+        .info-text h4 { color: #fff; margin-bottom: 8px; font-size: 1.2rem; }
+        .map-container { height: 100%; min-height: 450px; border: 1px solid var(--primary-gold); overflow: hidden; filter: grayscale(100%) invert(92%) contrast(83%); transition: all 0.5s ease; }
+        .map-container:hover { filter: none; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1); }
 
         /* --- FOOTER --- */
-        footer {
-            background: #050505;
-            padding: 50px 5%;
-            text-align: center;
-            border-top: 1px solid #222;
-        }
+        footer { background: #020202; padding: 60px 5%; text-align: center; border-top: 1px solid #111; }
+        .social-icons a { color: var(--text-grey); font-size: 1.8rem; margin: 0 20px; transition: 0.3s; }
+        .social-icons a:hover { color: var(--primary-gold); transform: translateY(-3px); }
+        .copyright { margin-top: 25px; color: #555; font-size: 0.9rem; }
 
-        .social-icons a {
-            color: var(--text-grey);
-            font-size: 1.5rem;
-            margin: 0 15px;
-            transition: 0.3s;
-        }
+        /* --- FLOATING BUTTONS --- */
+        .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; text-align: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 1001; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+        .whatsapp-btn:hover { transform: scale(1.1); background-color: #1ebe57; box-shadow: 0 0 20px #25d366; }
 
-        .social-icons a:hover {
-            color: var(--primary-gold);
-        }
-
-        .copyright {
-            margin-top: 20px;
-            color: var(--text-grey);
-            font-size: 0.8rem;
-        }
+        #backToTop { position: fixed; bottom: 30px; left: 30px; width: 50px; height: 50px; background: var(--primary-gold); color: #000; border-radius: 5px; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; pointer-events: none; transition: 0.3s; z-index: 1000; font-size: 1.2rem; }
+        #backToTop.show { opacity: 1; pointer-events: all; }
+        #backToTop:hover { background: #fff; transform: translateY(-3px); }
 
         /* --- ANIMATIONS --- */
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Scroll Animation Class */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
         
-        /* Mobile Responsive */
+        /* --- MOBILE RESPONSIVE --- */
         @media(max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
-            .nav-links { display: none; } /* Hide regular nav for mobile simplicity */
+            .hero-content h1 { font-size: 3rem; }
+            .hamburger { display: block; }
+            .nav-links { position: absolute; right: 0; top: 80px; background: rgba(0, 0, 0, 0.95); height: 0; flex-direction: column; width: 100%; text-align: center; gap: 0; overflow: hidden; transition: 0.3s ease-in-out; }
+            .nav-links.active { height: 350px; padding: 20px 0; border-bottom: 1px solid var(--primary-gold); }
+            .nav-links li { padding: 15px 0; }
+            .book-btn { display: none; }
+            .about-content, .contact-container { grid-template-columns: 1fr; }
+            .map-container { min-height: 300px; }
+            .pricing-container { padding: 30px; }
+            section { padding: 60px 5%; }
         }
     </style>
 </head>
 <body>
 
+    <div id="preloader">
+        <img src="sk-logo.png" alt="Loading..." class="loader-logo">
+    </div>
+
     <nav>
-        <div class="logo">Sk Makeup Studio</div>
+        <div class="logo">
+            <img src="sk-logo.png" alt="Sk Makeup Studio Logo">
+        </div>
+
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#pricing">Price List</a></li>
+            <li><a href="#reviews">Reviews</a></li> <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="#booking" class="book-btn">Book Appointment</a>
+
+        <div class="hamburger"><i class="fas fa-bars"></i></div>
+        <a href="#booking" class="book-btn">Book Now</a>
     </nav>
 
     <header id="home">
@@ -391,62 +227,128 @@
 
     <section id="about">
         <div class="section-title reveal">
-            <h2>The Studio</h2>
-            <p>Sk Makeup Studio is designed for the modern individual who seeks perfection.</p>
+            <h2>About The Studio</h2>
+            <p>More than just a salon, we are your partners in perfection.</p>
         </div>
-        <div style="text-align: center; max-width: 700px; margin: 0 auto; color: var(--text-grey); line-height: 1.8;" class="reveal">
-            <p>Located in the heart of the city, we specialize in bridal, editorial, and occasion makeup. Our studio utilizes high-end lighting and premium products to ensure you look flawless not just in the mirror, but through the camera lens as well.</p>
+        <div class="about-content reveal">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1521590832169-d7b1aa0d7e49?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Professional Makeup Artist working">
+            </div>
+            <div class="about-text">
+                <h3>Your Beauty, Our Masterpiece</h3>
+                <p><strong>Sk Makeup Studio</strong> is recognized as the leading destination for luxury beauty transformations. Our team of certified professionals specializes in <span style="color:var(--primary-gold)">High-Definition (HD) Bridal Makeup</span>, editorial styling, and advanced skincare.</p>
+                <p>We believe that every face tells a story. Whether you are preparing for your wedding day, a red-carpet event, or a professional photoshoot, we use only premium, hypoallergenic products (MAC, Bobbi Brown, Huda Beauty) to ensure a flawless, long-lasting glow.</p>
+            </div>
         </div>
     </section>
 
-    <section id="services" style="background-color: #0f0f0f;">
+    <section id="services" style="background-color: #0a0a0a;">
         <div class="section-title reveal">
-            <h2>Our Services</h2>
+            <h2>Our Expertise</h2>
             <p>Curated treatments for your skin and soul.</p>
         </div>
-
         <div class="services-grid">
             <div class="service-card reveal">
                 <i class="fas fa-brush service-icon"></i>
-                <h3>Bridal Makeup</h3>
-                <p>HD & Airbrush makeup designed to last through tears and laughter.</p>
-                <div class="price">Starts at $350</div>
+                <h3>Bridal Artistry</h3>
+                <p>Customized bridal packages including consultation, trial, and the big day glam.</p>
+            </div>
+            <div class="service-card reveal">
+                <i class="fas fa-camera service-icon"></i>
+                <h3>Photoshoot Ready</h3>
+                <p>Makeup designed specifically for studio lighting and high-resolution cameras.</p>
             </div>
             <div class="service-card reveal">
                 <i class="fas fa-magic service-icon"></i>
-                <h3>Editorial Glam</h3>
-                <p>High-fashion looks for photoshoots, runway, and creative projects.</p>
-                <div class="price">Starts at $200</div>
-            </div>
-            <div class="service-card reveal">
-                <i class="fas fa-spa service-icon"></i>
-                <h3>Skin Prep & Spa</h3>
-                <p>Luxury facials to prepare your canvas before the big event.</p>
-                <div class="price">Starts at $120</div>
+                <h3>Airbrush Finish</h3>
+                <p>The latest technology for a weightless, pore-less, and water-resistant look.</p>
             </div>
         </div>
     </section>
 
-    <section id="portfolio">
+    <section id="pricing">
+        <div class="section-title reveal">
+            <h2>Service Menu</h2>
+            <p>Transparent pricing for premium services.</p>
+        </div>
+        <div class="pricing-container reveal">
+            <div class="pricing-category">
+                <h3>Makeup Services</h3>
+                <div class="menu-item">
+                    <div class="item-name"><h4>HD Bridal Makeup</h4><span class="item-desc">Includes lashes, draping & hair</span></div>
+                    <div class="dots"></div><div class="item-price">$350</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-name"><h4>Party Glam</h4><span class="item-desc">Evening/Cocktail look</span></div>
+                    <div class="dots"></div><div class="item-price">$120</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-name"><h4>Airbrush Makeup</h4><span class="item-desc">Long-lasting 24hr wear</span></div>
+                    <div class="dots"></div><div class="item-price">$200</div>
+                </div>
+            </div>
+            <div class="pricing-category" style="margin-bottom:0;">
+                <h3>Hair & Spa</h3>
+                <div class="menu-item">
+                    <div class="item-name"><h4>Luxury Blowout</h4><span class="item-desc">Wash, condition & style</span></div>
+                    <div class="dots"></div><div class="item-price">$55</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-name"><h4>Bridal Updo</h4><span class="item-desc">Intricate styling with accessories</span></div>
+                    <div class="dots"></div><div class="item-price">$85</div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-name"><h4>Glow Facial</h4><span class="item-desc">Pre-makeup skin prep</span></div>
+                    <div class="dots"></div><div class="item-price">$90</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" style="background-color: #080808;">
+        <div class="section-title reveal">
+            <h2>Client Love</h2>
+            <p>Stories from our happy brides and clients.</p>
+        </div>
+        <div class="testimonial-grid reveal">
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"Sk Makeup Studio made me feel like a queen on my wedding day. The HD makeup was so natural yet glamorous. Highly recommended for every bride!"</p>
+                <div class="client-name">- Priya Sharma <span>Bridal Client</span></div>
+            </div>
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"Professionalism at its best. The staff is polite, and the ambiance is pure luxury. I loved my party makeup look for my sister's engagement."</p>
+                <div class="client-name">- Anjali Verma <span>Party Makeup</span></div>
+            </div>
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                <p class="review-text">"Best salon experience I've ever had. They really listen to what you want instead of just applying layers of product. True artists."</p>
+                <div class="client-name">- Neha Gupta <span>Model</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" style="background-color: #0a0a0a;">
         <div class="section-title reveal">
             <h2>Portfolio</h2>
             <p>Real Clients. Real Results.</p>
         </div>
         <div class="gallery-grid">
             <div class="gallery-item reveal">
-                <img src="1.jpg" alt="Makeup 1">
+                <img src="https://images.unsplash.com/photo-1487412947132-26c5c112a42b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Makeup 1">
                 <div class="gallery-overlay"><h3>Bridal Glow</h3></div>
             </div>
             <div class="gallery-item reveal">
-                <img src="2.jpg" alt="Makeup 2">
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Makeup 2">
                 <div class="gallery-overlay"><h3>Evening Look</h3></div>
             </div>
             <div class="gallery-item reveal">
-                <img src="4.jpg" alt="Makeup 3">
+                <img src="https://images.unsplash.com/photo-1596704017254-9b1b1848fb11?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Makeup 3">
                 <div class="gallery-overlay"><h3>Editorial</h3></div>
             </div>
             <div class="gallery-item reveal">
-                <img src="main.png" alt="Makeup 4">
+                <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Makeup 4">
                 <div class="gallery-overlay"><h3>Natural</h3></div>
             </div>
         </div>
@@ -458,14 +360,12 @@
                 <h2>Book Appointment</h2>
                 <p style="color: #ccc;">Reserve your exclusive session.</p>
             </div>
-            
             <form id="bookingForm">
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" class="form-control" required>
                 </div>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div class="form-group">
                         <label for="date">Date</label>
                         <input type="date" id="date" class="form-control" required>
@@ -480,19 +380,59 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label for="service">Service Type</label>
                     <select id="service" class="form-control">
-                        <option>Bridal Makeup</option>
-                        <option>Party Makeup</option>
-                        <option>Skin Treatment</option>
-                        <option>Consultation</option>
+                        <option>HD Bridal Makeup ($350)</option>
+                        <option>Party Glam ($120)</option>
+                        <option>Airbrush Makeup ($200)</option>
+                        <option>Skin Treatment ($90)</option>
                     </select>
                 </div>
-
-                <button type="submit" class="cta-button" style="width: 100%; margin-top: 10px;">Confirm Booking</button>
+                <button type="submit" class="cta-button" style="width: 100%; margin-top: 15px;">Confirm Booking</button>
             </form>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="section-title reveal">
+            <h2>Visit The Studio</h2>
+            <p>Drop by for a consultation or coffee.</p>
+        </div>
+        <div class="contact-container reveal">
+            <div class="contact-info-card">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt info-icon"></i>
+                    <div class="info-text">
+                        <h4>Address</h4>
+                        <p>Sk Makeup Studio, 1st Floor<br>Opposite City Mall, Main Road<br>Jhansi, Uttar Pradesh - 284001</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt info-icon"></i>
+                    <div class="info-text">
+                        <h4>Phone</h4>
+                        <p>+91 98765 43210<br>+91 91234 56789</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock info-icon"></i>
+                    <div class="info-text">
+                        <h4>Opening Hours</h4>
+                        <p>Mon - Sat: 10:00 AM - 08:00 PM<br>Sunday: By Appointment Only</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope info-icon"></i>
+                    <div class="info-text">
+                        <h4>Email</h4>
+                        <p>contact@skmakeupstudio.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115348.69747209376!2d78.5034440854492!3d25.441111000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397776d458ba7703%3A0x96e9cda55c3481ca!2sJhansi%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1703504456789!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
         </div>
     </section>
 
@@ -506,64 +446,95 @@
         <p class="copyright">123 Luxury Avenue, Fashion District, NY</p>
     </footer>
 
+    <a href="https://wa.me/919876543210" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <div id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
     <script>
-        // 1. Navigation Scroll Effect
+        // 1. Preloader Logic (Hides loader after site loads)
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => { preloader.style.display = 'none'; }, 800);
+            }, 1500);
+        });
+
+        // 2. Navbar & BackToTop Scroll Effect
+        const nav = document.querySelector('nav');
+        const backToTopBtn = document.getElementById('backToTop');
+
         window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
+            // Navbar Glass Effect
             if (window.scrollY > 50) {
-                nav.style.background = 'rgba(10, 10, 10, 0.95)';
-                nav.style.padding = '15px 5%';
+                nav.style.background = 'rgba(5, 5, 5, 0.95)';
+                nav.style.padding = '10px 5%';
             } else {
-                nav.style.background = 'rgba(10, 10, 10, 0.8)';
-                nav.style.padding = '20px 5%';
+                nav.style.background = 'rgba(5, 5, 5, 0.9)';
+                nav.style.padding = '15px 5%';
+            }
+
+            // Back To Top Visibility
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
             }
         });
 
-        // 2. Reveal Elements on Scroll (Intersection Observer)
-        const revealElements = document.querySelectorAll('.reveal');
+        // Back To Top Click Action
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
-        const revealCallback = (entries, observer) => {
+        // 3. Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Only animate once
                 }
             });
-        };
+        }, { threshold: 0.15 });
+        revealElements.forEach(el => observer.observe(el));
 
-        const revealOptions = {
-            threshold: 0.15
-        };
+        // 4. Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const links = document.querySelectorAll('.nav-links li');
 
-        const observer = new IntersectionObserver(revealCallback, revealOptions);
-
-        revealElements.forEach(el => {
-            observer.observe(el);
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars'); icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times'); icon.classList.add('fa-bars');
+            }
         });
 
-        // 3. Simple Booking Form Handler
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.querySelector('i').classList.remove('fa-times');
+                hamburger.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // 5. Booking Form Simulation
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Stop actual submission
-            
+            e.preventDefault();
             const btn = this.querySelector('button');
             const originalText = btn.innerText;
-            
-            // Simulate loading
             btn.innerText = 'Processing...';
-            btn.style.background = '#fff';
-            btn.style.color = '#000';
+            btn.style.background = '#fff'; btn.style.color = '#000';
             
             setTimeout(() => {
-                alert("Thank you! Your appointment request at Sk Makeup Studio has been received. We will contact you shortly.");
-                btn.innerText = 'Booking Confirmed';
-                btn.style.background = '#28a745'; // Green color
-                btn.style.color = 'white';
+                alert("Thank you! Your booking request for Sk Makeup Studio has been received.");
+                btn.innerText = 'Confirmed'; btn.style.background = '#28a745'; btn.style.color = 'white';
                 this.reset();
-                
                 setTimeout(() => {
                     btn.innerText = originalText;
-                    btn.style.background = 'var(--primary-gold)';
-                    btn.style.color = 'var(--dark-bg)';
+                    btn.style.background = 'var(--primary-gold)'; btn.style.color = 'var(--dark-bg)';
                 }, 3000);
             }, 1500);
         });
